@@ -1,0 +1,200 @@
+@import url("https://googleapis.com");
+
+/* Reset básico: quita márgenes por defecto del navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta de colores */
+  --color-primary: #a0714b;
+  --color-primary-hover: #3a2d11;
+  --color-text-main: #0f172a;
+  --color-text-muted: #475569;
+  --color-bg-body: #f8fafc;
+  --color-bg-surface: #ffffff;
+  --color-border: #cbd5e1;
+
+  /*Tipografía*/
+  --font-family-sans: system-ui, -apple-system, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /*Espaciado*/
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /*Bordes y sombras */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-bg-surface, #ffffff);
+  border-bottom: 1px solid var(--color-border, #cbd5e1);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgb(0 0 0 / 0.05));
+
+  /* Flexbox alineando logo, nac y carrito*/
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-items: center;
+  padding: var(--space-4, 1rem) 5%; /*Ajusta espacio a los lados*/
+}
+
+.header__logo {
+  font-size: var(--font-size-lg, 1.25rem);
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.nav__lista {
+  display: flex;
+  gap: var(--space-6, 1.5rem);
+  list-style: none;
+}
+
+.nav__lista a {
+  text-decoration: none;
+  color: var(--color-text-main, #0f172a);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav__lista a:hover {
+  color: var(--color-primary, #2563eb);
+}
+
+.header__carrito {
+  text-decoration: none;
+  color: var(--color-text-main, #0f172a);
+}
+
+/*Botón de hamburguesa*/
+
+.header__toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #0f172a;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+}
+.hamburger::before {
+  top: -8px;
+}
+.hamburger::after {
+  bottom: -8px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Menú móvil para < 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .header__toggle {
+    display: block; /* Aparece la hamburguesa */
+    order: 2; /* Lo mueve a la derecha si es necesario */
+  }
+
+  .header__carrito {
+    order: 3; /* Acomoda el carrito al final */
+  }
+
+  /* Transformamos el Nav en una cortina lateral */
+  .header__nav {
+    position: fixed;
+    top: 60px; /* Ajusta según la altura real de tu header */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: var(--color-bg-surface, #ffffff);
+
+    /* Estado inicial invisible y desplazado a la derecha */
+    opacity: 0;
+    transform: translateX(100%);
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease;
+  }
+
+  /* CLASE DE APERTURA (Activada por JS) */
+  .header__nav.is-open {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Cambiamos la lista de horizontal a vertical */
+  .nav__lista {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    gap: 2rem;
+  }
+
+  .nav__lista a {
+    font-size: 1.25rem;
+  }
+
+  /* ANIMACIÓN: De Hamburguesa a "X" */
+  .header__toggle.is-active .hamburger {
+    background: transparent;
+  }
+  .header__toggle.is-active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  .header__toggle.is-active .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}

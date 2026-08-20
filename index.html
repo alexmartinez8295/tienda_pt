@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda PT | Ropa</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">Tienda PT</div>
+
+      <!-- Agregando botón "hamburguesa" -->
+      <button class="header__toggle" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="header__nav">
+        <ul class="nav__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="paginas/catalogo.html">Catálogo</a></li>
+          <li><a href="paginas/contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__carrito">
+        <a href="paginas/carrito.html">
+          Carrito <span id="carrito-contador">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Nueva colección</h1>
+        <p>Ropa para cada estilo, a un clic de distancia.</p>
+        <a href="paginas/catalogo.html" class="hero__boton">Ver catálogo</a>
+      </section>
+
+      <section class="destacados">
+        <h2>Productos destacados</h2>
+
+        <div class="destacados__grid" id="grid-productos">
+          <!-- Las tarjetas de producto se insertan aquí por JS -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Tienda PT. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

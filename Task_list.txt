@@ -1,0 +1,31 @@
+Fase 0 — Sistema de diseño configurable
+Reto: crea css/tokens.css con TODAS las variables en :root: colores (primario, secundario, acento, fondo, texto, error/éxito), tipografía (importa una Google Font juvenil: Poppins, Baloo 2, Fredoka o Space Grotesk), escala de espaciado (--space-1 a --space-6), radios de borde (--radio-sm/md/lg — para el estilo juvenil, radios grandes y sombras suaves), y una --sombra-card.
+Prueba de que funciona: duplica el archivo como tokens-mascotas.css, cambia solo los valores (otra paleta, otra fuente) y confirma que si lo cambias en el <link> del HTML, toda la página se ve distinta sin tocar una sola línea de estructura.
+Listo cuando: puedes cambiar de "tienda de ropa" a otro giro editando un solo archivo.
+
+Fase 1 — Header y navegación responsive
+Reto: header con flexbox (arregla el bug de arriba), sticky al hacer scroll (position: sticky), menú hamburguesa en mobile hecho con JS puro (classList.toggle, sin librerías), transición suave de apertura.
+Listo cuando: el nav colapsa en pantallas <768px y abre/cierra con animación.
+
+Fase 2 — Grid de productos (arregla lo que ya tienes)
+Reto: mueve el display:grid al contenedor correcto, usa auto-fit/minmax bien escrito, agrega gap con tus tokens de espaciado. Cada tarjeta: imagen, nombre, precio, botón "Agregar" con hover (transform: scale() o cambio de color con transition).
+Listo cuando: el grid se reacomoda solo al achicar la ventana, sin media queries manuales para el número de columnas.
+
+Fase 3 — JS modular y datos "genéricos"
+Reto: separa js/data.js (el array, piensa los campos como genéricos: nombre, precio, imagen, y un objeto atributos: {} flexible — en ropa serían talla/color, en otro giro podría ser tamaño/sabor) de js/render.js (la función que dibuja tarjetas) y js/main.js (que solo orquesta: llama a render, inicializa eventos).
+Listo cuando: podrías borrar el contenido de data.js y poner productos de otro rubro sin tocar render.js.
+
+Fase 4 — Carrito con localStorage
+Reto: agregar/quitar producto, contador en el header (#carrito-contador), página carrito.html con lista, cantidades y total. Todo persistido en localStorage (sobrevive al recargar).
+Listo cuando: cierras el navegador, lo vuelves a abrir, y el carrito sigue ahí.
+
+Fase 5 — Filtros y búsqueda
+Reto: buscador por nombre (input + filtro en tiempo real con JS) y filtro por categoría (piensa las categorías también como configurables, no hardcodeadas al DOM).
+
+Fase 6 — Página de detalle de producto
+Reto: al hacer clic en una tarjeta, pasa el id por query string (producto.html?id=3) y renderiza el detalle leyendo ese parámetro con URLSearchParams.
+
+Fase 7 — Config "multi-negocio" final
+Reto: crea un js/config.js con nombre del sitio, textos del hero, labels de categorías y ruta del tema CSS. Que index.html lea esos textos desde JS en vez de tenerlos quemados en el HTML. Es la prueba final de que el mismo esqueleto sirve para cualquier giro solo cambiando config.js + tokens.css.
+
+
