@@ -1,4 +1,4 @@
-@import url("https://googleapis.com");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&subset=cyrillic");
 
 /* Reset básico: quita márgenes por defecto del navegador */
 * {
@@ -43,8 +43,8 @@
 
 body {
   font-family: system-ui, sans-serif;
-  color: var(--color-texto);
-  background-color: var(--color-fondo);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-body);
 }
 
 .header {
